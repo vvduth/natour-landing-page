@@ -26,5 +26,156 @@ body{
     background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8) ),url(../img/hero.jpg); /*color change from left to right*/
     background-size: cover;
     background-position: top;
-    clip-path: polygon();
+    position: relative; /*set this cuz header is the parent elems of the img, the postion of the child elements count will start(reference) from header*/
+    clip-path: polygon(0 0, 100% 0,100% 75% , 0 100% ); /*cut the header into put prefered shape by specify the points x, y*/
+}
+.logo-box{
+    /*This is the child element*/
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.logo{
+    height: 35px;
+}
+.text-box{ 
+    /*Put the h1 and its spans into the center of the header*/
+    position: absolute;
+    top: 40%; /*moving the element in relation with parent element*/
+    left: 50%;
+    transform: translate(-50%, -50%); /*No longer in realtion with parent element*/
+    /*Now it's reference is the whole window*/
+    /*Use this transform to exactly pput the span in the center*/
+    text-align: center;
+}
+.heading-primary {
+    /*both for sub and main*/
+    color: #fff;
+    text-transform: uppercase;
+    /* backface-visibility: hidden; */
+
+}
+.heading-primary-main {
+    display: block; /*display span into 2 separates lines/blocks*/
+    font-size : 60px ;
+    font-weight: 400 ;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out; /*define how the animation will run, fast, slow,*/
+    
+    /*animation-delay: 3s;
+      animation-iteration-count: 3; animation runs 3 times 
+    */
+    
+}
+.heading-primary-sub {
+    display: block;
+    font-size : 20px ;
+    font-weight: 700 ;
+    letter-spacing: 7px;
+    animation: moveInRight 3s ease-out;
+    
+}
+
+/*Animation*/
+@keyframes moveInLeft {
+    /*When the animation starts*/
+    0% {
+        opacity: 0; /*0 mean no visible*/
+        transform: translateX(-100px); /*Fly in x direction, negative measn go to the left, like math*/
+    }
+    /*When the animation haftway =)))*/
+    80% {
+        transform: translateX(20px);
+        /*At this point, x must be 20px from starting point*/
+    }
+    /*When the animaton finished*/
+    100% {
+        opacity: 1; /*fully appeared*/
+        transform: translate(0); /*0 makes it look the same as the way it should look*/
+    }
+}
+@keyframes moveInRight {
+    /*When the animation starts*/
+    0% {
+        opacity: 0; /*0 mean no visible*/
+        transform: translateX(100px); /*Fly in x direction, negative measn go to the left, like math*/
+    }
+    /*When the animation haftway =)))*/
+    80% {
+        transform: translateX(-10px);
+        /*At this point, x must be 20px from starting point*/
+    }
+    /*When the animaton finished*/
+    100% {
+        opacity: 1; /*fully appeared*/
+        transform: translate(0); /*0 makes it look the same as the way it should look*/
+    }
+}
+@keyframes moveInBottom {
+    /*When the animation starts*/
+    0% {
+        opacity: 0; /*0 mean no visible*/
+        transform: translateY(30px); /*Fly in x direction, negative measn go to the left, like math*/
+    }
+    /*When the animaton finished*/
+    100% {
+        opacity: 1; /*fully appeared*/
+        transform: translate(0); /*0 makes it look the same as the way it should look*/
+    }
+}
+/*pseudo classes to style elems under special conditions: click, hive, sumbit,...*/
+.btn:link,
+.btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /*prevent the button stick to the upper text*/
+    border-radius: 100px;
+    transition: all .2s; 
+    position: relative;
+    /*The button now is <a> tag so it will be treated as text, so to center it just add text-align in the textbox*/
+}
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2); /*The shadow will be 0 in X and 10px in Y direction*/
+}
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.btn-white{
+    background-color: #fff;
+    color: #777;
+}
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /*keep this part behind if the button*/
+    transition: all .4s;
+    /*this ::after class is now become the child of the parent  button:visited*/
+}
+.btn-white::after{
+    background-color: white;
+}
+.btn:hover::after{
+    /*after the btn was hovered*/
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated{
+    animation: moveInBottom .3s ease-out .75s;
+    /*Because the button delay is 0.75s so it waits 0.75 for the asnimation to work, 
+    duting that the button still visible
+    */
+    animation-fill-mode: backwards; /*use this to set the inital state of the button to 0%*/
 }
