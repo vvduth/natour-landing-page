@@ -7,19 +7,27 @@ Dark green: #28b485
 
 */
 /* this prevent browsers adding any uness margin or padding*/
-*{
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 /*everythign related to font ,put it in the body*/
+html {
+    font-size: 62.5%;
+    /*use % for user zoom in/out and the font would be easly adapted */ 
+    /* font-size: 10px; from now if we use rem 1 rem = 10 pixels*/
+}
 body{
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7; /*1,7 bigger than default*/
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 .header{
     height: 95vh; /*95% of the viewport height*/
@@ -29,16 +37,16 @@ body{
     position: relative; /*set this cuz header is the parent elems of the img, the postion of the child elements count will start(reference) from header*/
     clip-path: polygon(0 0, 100% 0,100% 75% , 0 100% ); /*cut the header into put prefered shape by specify the points x, y*/
 }
-.logo-box{
+.header__logo-box{
     /*This is the child element*/
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
-.logo{
-    height: 35px;
+.header__logo{
+    height: 3.5rem;
 }
-.text-box{ 
+.header__text-box{ 
     /*Put the h1 and its spans into the center of the header*/
     position: absolute;
     top: 40%; /*moving the element in relation with parent element*/
@@ -52,14 +60,15 @@ body{
     /*both for sub and main*/
     color: #fff;
     text-transform: uppercase;
-    /* backface-visibility: hidden; */
+    backface-visibility: hidden; 
+    margin-bottom: 6rem;
 
 }
-.heading-primary-main {
+.heading-primary--main {
     display: block; /*display span into 2 separates lines/blocks*/
-    font-size : 60px ;
+    font-size : 6rem ;
     font-weight: 400 ;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 3s;
@@ -70,11 +79,11 @@ body{
     */
     
 }
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size : 20px ;
+    font-size : 2rem ;
     font-weight: 700 ;
-    letter-spacing: 7px;
+    letter-spacing: 1.74rem;
     animation: moveInRight 3s ease-out;
     
 }
@@ -84,11 +93,11 @@ body{
     /*When the animation starts*/
     0% {
         opacity: 0; /*0 mean no visible*/
-        transform: translateX(-100px); /*Fly in x direction, negative measn go to the left, like math*/
+        transform: translateX(-10rem); /*Fly in x direction, negative measn go to the left, like math*/
     }
     /*When the animation haftway =)))*/
     80% {
-        transform: translateX(20px);
+        transform: translateX(2rem);
         /*At this point, x must be 20px from starting point*/
     }
     /*When the animaton finished*/
@@ -101,11 +110,11 @@ body{
     /*When the animation starts*/
     0% {
         opacity: 0; /*0 mean no visible*/
-        transform: translateX(100px); /*Fly in x direction, negative measn go to the left, like math*/
+        transform: translateX(10rem); /*Fly in x direction, negative measn go to the left, like math*/
     }
     /*When the animation haftway =)))*/
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
         /*At this point, x must be 20px from starting point*/
     }
     /*When the animaton finished*/
@@ -118,7 +127,7 @@ body{
     /*When the animation starts*/
     0% {
         opacity: 0; /*0 mean no visible*/
-        transform: translateY(30px); /*Fly in x direction, negative measn go to the left, like math*/
+        transform: translateY(3rem); /*Fly in x direction, negative measn go to the left, like math*/
     }
     /*When the animaton finished*/
     100% {
@@ -131,22 +140,22 @@ body{
 .btn:visited{
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block; /*prevent the button stick to the upper text*/
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s; 
     position: relative;
     /*The button now is <a> tag so it will be treated as text, so to center it just add text-align in the textbox*/
 }
 .btn:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,.2); /*The shadow will be 0 in X and 10px in Y direction*/
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2); /*The shadow will be 0 in X and 10px in Y direction*/
 }
 .btn:active{
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    transform: translateY(-0.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
-.btn-white{
+.btn--white{
     background-color: #fff;
     color: #777;
 }
@@ -155,7 +164,7 @@ body{
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -163,7 +172,7 @@ body{
     transition: all .4s;
     /*this ::after class is now become the child of the parent  button:visited*/
 }
-.btn-white::after{
+.btn--white::after{
     background-color: white;
 }
 .btn:hover::after{
@@ -172,7 +181,7 @@ body{
     opacity: 0;
 }
 
-.btn-animated{
+.btn--animated{
     animation: moveInBottom .3s ease-out .75s;
     /*Because the button delay is 0.75s so it waits 0.75 for the asnimation to work, 
     duting that the button still visible
