@@ -1,0 +1,55 @@
+/*pseudo classes to style elems under special conditions: click, hive, sumbit,...*/
+.btn {
+    &:link,
+    &:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      display: inline-block; /*prevent the button stick to the upper text*/
+      border-radius: 10rem;
+      transition: all 0.2s;
+      position: relative;
+      /*The button now is <a> tag so it will be treated as text, so to center it just add text-align in the textbox*/
+    }
+    &:hover {
+      transform: translateY(-0.3rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /*The shadow will be 0 in X and 10px in Y direction*/
+      &::after {
+        /*after the btn was hovered*/
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+    &:active {
+      transform: translateY(-0.1rem);
+      box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+    &--white {
+      background-color: $color-white;
+      color: $color-gray-dark;
+      &::after {
+        background-color: $color-white;
+      }
+    }
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; /*keep this part behind if the button*/
+      transition: all 0.4s;
+      /*this ::after class is now become the child of the parent  button:visited*/
+    }
+  
+    &--animated {
+      animation: moveInBottom 0.3s ease-out 0.75s;
+      /*Because the button delay is 0.75s so it waits 0.75 for the asnimation to work, 
+      duting that the button still visible
+      */
+      animation-fill-mode: backwards; /*use this to set the inital state of the button to 0%*/
+    }
+  }

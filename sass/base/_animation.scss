@@ -1,0 +1,59 @@
+/*Animation*/
+@keyframes moveInLeft {
+    /*When the animation starts*/
+    0% {
+      opacity: 0; /*0 mean no visible*/
+      transform: translateX(
+        -10rem
+      ); /*Fly in x direction, negative measn go to the left, like math*/
+    }
+    /*When the animation haftway =)))*/
+    80% {
+      transform: translateX(2rem);
+      /*At this point, x must be 20px from starting point*/
+    }
+    /*When the animaton finished*/
+    100% {
+      opacity: 1; /*fully appeared*/
+      transform: translate(
+        0
+      ); /*0 makes it look the same as the way it should look*/
+    }
+  }
+  @keyframes moveInRight {
+    /*When the animation starts*/
+    0% {
+      opacity: 0; /*0 mean no visible*/
+      transform: translateX(
+        10rem
+      ); /*Fly in x direction, negative measn go to the left, like math*/
+    }
+    /*When the animation haftway =)))*/
+    80% {
+      transform: translateX(-1rem);
+      /*At this point, x must be 20px from starting point*/
+    }
+    /*When the animaton finished*/
+    100% {
+      opacity: 1; /*fully appeared*/
+      transform: translate(
+        0
+      ); /*0 makes it look the same as the way it should look*/
+    }
+  }
+  @keyframes moveInBottom {
+    /*When the animation starts*/
+    0% {
+      opacity: 0; /*0 mean no visible*/
+      transform: translateY(
+        3rem
+      ); /*Fly in x direction, negative measn go to the left, like math*/
+    }
+    /*When the animaton finished*/
+    100% {
+      opacity: 1; /*fully appeared*/
+      transform: translate(
+        0
+      ); /*0 makes it look the same as the way it should look*/
+    }
+  }

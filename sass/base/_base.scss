@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+/*everythign related to font ,put it in the body*/
+html {
+  // this define what 1rem is  
+  font-size: 62.5%;
+  /*use % for user zoom in/out and the font would be easly adapted */
+  /* font-size: 10px; from now if we use rem 1 rem = 10 pixels*/
+}
+body {
+    box-sizing: border-box;
+}
