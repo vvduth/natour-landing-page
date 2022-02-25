@@ -1,0 +1,35 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute; // put all the pic in one same position
+        z-index: 10;
+        outline-offset: 2rem; // space betwwen greem border and the pic
+        
+        &--p1{
+            left: 0;
+            top: -2rem; // move the first pic upward
+        }
+        &--p2{
+            right: 0;
+            top: 2rem; // move the  pic 
+        }
+        &--p3{
+            left: 20%;
+            top: 10rem; // move the  pic 
+        }
+        &:hover {
+            outline: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow:  0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20; // move the pic higher and display on top
+        }
+    }
+    &:hover &__photo:not(:hover) {
+        // when we hover the composition, this selector select the photo which are not hovered
+        transform: scale(0.95);
+    }
+}
