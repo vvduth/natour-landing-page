@@ -1,0 +1,40 @@
+.card {
+    perspective: 150rem;
+    -moz-perspective: 150rem; // use it forr work in firefox
+    position: relative;
+    height: 50rem;
+    &__side{
+        background-color: orangered;
+        color: #fff;
+        font-size: 2rem;
+
+        height: 50rem;
+        transition: all .8s ease ;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // we have two card one of them is on top iof the other, 
+        // when spin , both cards spin so we use the backface for hide the animation of the card at the back, that makes the aniamation smoother and less cumbersome
+        backface-visibility: hidden;
+        border-radius: .3rem;
+        box-shadow:  0 1.5rem 4rem rgba($color-black, .15) ;
+        &--front {
+            background-color: $color-white;
+        }
+        &--back {
+            transform: rotateY(180deg);
+            &-1{
+                background-image: linear-gradient(to right bottom,$color-secondary-light, $color-secondary-dark) ;
+            }
+        }
+    }
+    
+    
+    &:hover &__side--front{
+        transform: rotateY(180deg);
+    }
+    &:hover &__side--back{
+        transform: rotateY(0);
+    }
+}
