@@ -14,6 +14,15 @@ html {
 body {
   box-sizing: border-box; }
 
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  /*1,7 bigger than default*/
+  color: #777;
+  padding: 3rem; }
+
 .heading-primary {
   /*both for sub and main*/
   color: #fff;
@@ -39,15 +48,6 @@ body {
     font-weight: 700;
     letter-spacing: 1.74rem;
     animation: moveInRight 3s ease-out; }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  /*1,7 bigger than default*/
-  color: #777;
-  padding: 3rem; }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -157,7 +157,7 @@ body {
   margin-top: -3rem; }
 
 /*pseudo classes to style elems under special conditions: click, hive, sumbit,...*/
-.btn:link, .btn:visited {
+.btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
@@ -166,10 +166,13 @@ body {
   border-radius: 10rem;
   transition: all 0.2s;
   position: relative;
-  /*The button now is <a> tag so it will be treated as text, so to center it just add text-align in the textbox*/ }
+  font-size: 1.6rem;
+  /*The button now is <a> tag so it will be treated as text, so to center it just add text-align in the textbox*/
+  border: none;
+  cursor: pointer; }
 
 .btn:hover {
-  transform: translateY(-0.3rem);
+  transform: translateY(-3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   /*The shadow will be 0 in X and 10px in Y direction*/ }
   .btn:hover::after {
@@ -177,8 +180,8 @@ body {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0; }
 
-.btn:active {
-  transform: translateY(-0.1rem);
+.btn:active, .btn:focus {
+  transform: translateY(-1px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
@@ -234,7 +237,7 @@ body {
   position: relative;
   height: 52rem; }
   .card__side {
-    height: 50rem;
+    height: 52rem;
     transition: all .8s ease;
     position: absolute;
     top: 0;

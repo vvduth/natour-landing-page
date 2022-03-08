@@ -1,5 +1,6 @@
 /*pseudo classes to style elems under special conditions: click, hive, sumbit,...*/
 .btn {
+    &,
     &:link,
     &:visited {
       text-transform: uppercase;
@@ -9,19 +10,24 @@
       border-radius: 10rem;
       transition: all 0.2s;
       position: relative;
+      font-size: $default-font-size;
       /*The button now is <a> tag so it will be treated as text, so to center it just add text-align in the textbox*/
+      //Change for the <button> element
+      border: none;
+      cursor: pointer;
     }
     &:hover {
-      transform: translateY(-0.3rem);
-      box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /*The shadow will be 0 in X and 10px in Y direction*/
+      transform: translateY(-3px);
+      box-shadow: 0 1rem 2rem rgba($color-black,.2); /*The shadow will be 0 in X and 10px in Y direction*/
       &::after {
         /*after the btn was hovered*/
         transform: scaleX(1.4) scaleY(1.6);
         opacity: 0;
       }
     }
-    &:active {
-      transform: translateY(-0.1rem);
+    &:active,
+    &:focus {
+      transform: translateY(-1px);
       box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
     }
     &--white {
