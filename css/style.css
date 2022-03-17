@@ -436,6 +436,9 @@ body {
   width: 44%;
   display: inline-block; }
 
+.form__radio-input {
+  display: none; }
+
 .form__radio-label {
   font-size: 1.6rem;
   cursor: pointer;
